@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="MySQL_CRUD_ON_TOMCAT">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="java-output-path" value="/MySQL_CRUD_ON_TOMCAT/build/classes"/>
+        <property name="context-root" value="MySQL_CRUD_ON_TOMCAT"/>
+    </wb-module>
+</project-modules>
