@@ -1,0 +1,9 @@
+<!-- POOL DE CONEXIONES -->
+<Context>
+	<Resource name="jdbc/mysql" auth="Container" type="javax.sql.DataSource"
+		maxActive="15" maxIdle="3" maxWait="5000"
+		username="root" password=""
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/information_schema">
+	</Resource>
+</Context>
