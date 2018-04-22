@@ -69,6 +69,30 @@ public class ControllerServlet extends HttpServlet {
 		PrintWriter salida = response.getWriter();
 		
 		response.setContentType("text/plain");
+		
+		String opcion = request.getParameter("opcion");
+		switch (opcion) {
+		case "listar":
+			getProductos(request,response);
+			break;
+		case "insertar":
+			insertProductos(request,response);
+			break;
+		}
+
+	}
+
+
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+	
+	public void getProductos(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			//Obtengo la lista de productos en forma de ResultSet de la consulta SQL 
 			ResultSet resultProductos = miProductoDAO.getProdutos();
@@ -86,15 +110,14 @@ public class ControllerServlet extends HttpServlet {
 
 			e.printStackTrace();
 		}
-
+		
+		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+	
+	private void insertProductos(HttpServletRequest request, HttpServletResponse response) {
+		
+		
 	}
 	
 	public ArrayList<Producto> convertirResultSetToProducto(ResultSet resultProductos){

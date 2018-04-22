@@ -13,7 +13,7 @@
 		Nombre: <input type="text" name="articulo" id="articulo"><br>
 		Precio: <input type="text" name="precio" id="precio"><br>
 		CodFabricante: <input type="text" name="codFabricante" id="codFabricante"><br>
-		<input type="submit" name="insertar" id="insertar" value="insertar">
+		<input type="submit" name="opcion" id="insertar" value="insertar">
 	</form>
 </body>
 </html>
