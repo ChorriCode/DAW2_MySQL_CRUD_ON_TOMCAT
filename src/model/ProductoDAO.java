@@ -10,6 +10,7 @@ public class ProductoDAO {
 	private DataSource connectionPull;
 	private Connection conn;
 	private Statement state;
+	private PreparedStatement preState;
 	private ResultSet result;
 	
 	
@@ -41,9 +42,84 @@ public class ProductoDAO {
 		//Ejecuto la instuccion SQL anterio
 		result = state.executeQuery(sql);
 		//Recorro el ResultSet que obtengo de las BBDDD		
-		
 		return result;
 		
 	}
+	
+	
+	public void setProductos(Producto miProducto) throws Exception {
+		createConnextion();
+		String sql = "insert into articulos (nombre, precio, fabricante) values(?,?,?)";
+		preState = conn.prepareStatement(sql);
+		preState.setString(1, miProducto.getArticulo());
+		preState.setInt(2, miProducto.getPrecio());
+		preState.setInt(3, miProducto.getCodFabricante());
+		preState.execute();
+		
+		
+		
+	}
 
+
+
+	public DataSource getConnectionPull() {
+		return connectionPull;
+	}
+
+
+
+	public Connection getConn() {
+		return conn;
+	}
+
+
+
+	public Statement getState() {
+		return state;
+	}
+
+
+
+	public ResultSet getResult() {
+		return result;
+	}
+
+
+
+	public void setConnectionPull(DataSource connectionPull) {
+		this.connectionPull = connectionPull;
+	}
+
+
+
+	public void setConn(Connection conn) {
+		this.conn = conn;
+	}
+
+
+
+	public void setState(Statement state) {
+		this.state = state;
+	}
+
+
+
+	public void setResult(ResultSet result) {
+		this.result = result;
+	}
+
+
+
+	public PreparedStatement getPreState() {
+		return preState;
+	}
+
+
+
+	public void setPreState(PreparedStatement preState) {
+		this.preState = preState;
+	}
+
+	
+	
 }

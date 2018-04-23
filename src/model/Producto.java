@@ -8,6 +8,18 @@ public class Producto {
 	private int codFabricante;
 	
 	
+	
+	
+	public Producto(String articulo, int precio, int codFabricante) {
+		super();
+		this.articulo = articulo;
+		this.precio = precio;
+		this.codFabricante = codFabricante;
+	}
+
+
+
+
 	public Producto(int codigo, String articulo, int precio) {
 		this.codigo = codigo;
 		this.articulo = articulo;

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form name="fomrInsertar" method="post" action="">
+	<form name="fomrInsertar" method="get" action="ControllerServlet">
 		<p>INSERTAR UN ARTÍCULO</p>
 		Codigo: <input type="text" name="codigo" id="codigo"><br>
 		Nombre: <input type="text" name="articulo" id="articulo"><br>

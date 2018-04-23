@@ -8,6 +8,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 import javax.annotation.Resource;
@@ -71,12 +72,23 @@ public class ControllerServlet extends HttpServlet {
 		response.setContentType("text/plain");
 		
 		String opcion = request.getParameter("opcion");
+		if (opcion == null) opcion = "listar";
 		switch (opcion) {
 		case "listar":
 			getProductos(request,response);
+			try {
+				miProductoDAO.getResult().close();
+				miProductoDAO.getState().close();
+				miProductoDAO.getConn().close();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			break;
 		case "insertar":
-			insertProductos(request,response);
+			setProductos(request,response);
 			break;
 		}
 
@@ -115,8 +127,19 @@ public class ControllerServlet extends HttpServlet {
 	}
 	
 	
-	private void insertProductos(HttpServletRequest request, HttpServletResponse response) {
-		
+	private void setProductos(HttpServletRequest request, HttpServletResponse response) {
+		//int codigo = (int) request.getAttribute("codigo");
+
+		String articulo = request.getParameter("articulo");		
+		int precio = Integer.parseInt(request.getParameter("precio"));		
+		int codFabricante = Integer.parseInt(request.getParameter("codFabricante"));	
+		Producto miProducto = new Producto(articulo, precio, codFabricante);
+		try {
+			miProductoDAO.setProductos(miProducto);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		
 	}
 	
