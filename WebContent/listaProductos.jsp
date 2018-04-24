@@ -49,6 +49,10 @@
   		background-color: green;
   		color: white;
   	}
+  	input#modificar {
+  		background-color: blue;
+  		color: white;
+  	}
    	input#no {
   		background-color: red;
   		color: white;
@@ -82,6 +86,11 @@
           <td><%= unProducto.getArticulo()  %></td>
           <td><%= unProducto.getPrecio()  %></td>
           <td><%= unProducto.getCodFabricante()  %></td>
+          <td><input type="button" value="Modificar" id="modificar"
+          onclick="window.location.href='modificarProducto.jsp?codigo=<%= unProducto.getCodigo()%>&'+
+          													   'articulo=<%= unProducto.getArticulo()%>&'+
+          													   'precio=<%= unProducto.getPrecio()%>&'+
+          													   'codFabricante=<%= unProducto.getCodFabricante()%>'"></td>
           <td><input type="button" value="Eliminar" id="eliminar" onclick="document.getElementById('cod<%= unProducto.getCodigo()%>').style.display = 'block'"></td>
           <td id="cod<%= unProducto.getCodigo()%>" class="si">
           <input type="button" value="Eliminar SI" id="eliminarSi" onclick="window.location.href='ControllerServlet?opcion=borrar&codProducto=<%= unProducto.getCodigo()%>'">

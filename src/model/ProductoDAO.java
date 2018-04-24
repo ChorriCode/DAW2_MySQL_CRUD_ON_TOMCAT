@@ -67,7 +67,19 @@ public class ProductoDAO {
 		preState.execute();
 	}
 
-
+	public void updateProductos(Producto miProducto) throws Exception {
+		createConnextion();
+		String sql = "update articulos set nombre = ?, precio = ?, fabricante = ? where codigo = ?";
+		preState = conn.prepareStatement(sql);
+		//establecemos cuales serán los valores de la consulta sql por cada "?" tenemos debajo que valores asignamos por el orden de las columnas
+		
+		preState.setString(1, miProducto.getArticulo());
+		preState.setInt(2, miProducto.getPrecio());
+		preState.setInt(3, miProducto.getCodFabricante());
+		preState.setInt(4, miProducto.getCodigo());
+		preState.execute();
+			
+	}
 
 	public DataSource getConnectionPull() {
 		return connectionPull;

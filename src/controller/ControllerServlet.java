@@ -2,15 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-import javax.swing.JOptionPane;
-
 import model.Producto;
 import model.ProductoDAO;
 
@@ -100,13 +92,12 @@ public class ControllerServlet extends HttpServlet {
 			deleteProductos(request,response);
 			opcion = "listar";
 			break;
-
-
+		case "modificar":
+			updateProductos(request,response);
+			opcion = "listar";
+			break;
 		}
-		
-
 	}
-
 
 
 	/**
@@ -139,6 +130,24 @@ public class ControllerServlet extends HttpServlet {
 		
 	}
 	
+	private void updateProductos(HttpServletRequest request, HttpServletResponse response) {
+		int codigo = Integer.parseInt(request.getParameter("codigo"));
+		String articulo = request.getParameter("articulo");		
+		int precio = Integer.parseInt(request.getParameter("precio"));		
+		int codFabricante = Integer.parseInt(request.getParameter("codFabricante"));	
+		Producto miProducto = new Producto(codigo, articulo, precio, codFabricante);
+		try {
+			//insertamos el producto en la BBDD
+			miProductoDAO.updateProductos(miProducto);
+			response.sendRedirect("http://localhost:8080/MySQL_CRUD_ON_TOMCAT/ControllerServlet");
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+	}
+
 	
 	private void setProductos(HttpServletRequest request, HttpServletResponse response) {
 		//int codigo = (int) request.getAttribute("codigo");
