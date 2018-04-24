@@ -1,17 +1,9 @@
-	Conexión y acceso a datos de SQLite y Postgres
+	ConexiÃ³n y  acceso a datos de MySQL CRD con JSP Servlet y Tomcat
 		**********************************************
 	DESCRIPCION DE LA TAREA:
 	
-		Crear en un proyecto nuevo los accesos a SQLite y postgres. Es una práctica de "sistemas".
-	
-		Conectar (controlador JDBC y cadena de conexión)
-	
-		Deben incluir las clases y métodos necesarios para :
+		Se conecta a travÃ©s del pull de datos, para cambiar usuario y contraseÃ±a acceder
+		al fichero context.xml situado en \WebContent\META-INF\
 	
 		Hacer sentencias DML : SELECT, INSERT, DELETE (con confirmacion), y UPDATE.
 	
-	ENTREGA DE LA PRÁCTICA:
-	
-	1)	Proyecto con las clases necesarias y que se ejecute , a ser posible desde un menú,
-		pero no es requisito.
-	2) Pequeña memoria explicando los problemas encontrados y los enlaces que has visitado.
