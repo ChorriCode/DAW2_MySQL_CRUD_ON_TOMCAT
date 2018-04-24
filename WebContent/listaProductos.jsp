@@ -62,6 +62,12 @@
   		color: yellow;
   	}
   	
+  	#contenedorBoton>input {
+  	  	background-color: purple;
+  		color: white;
+  	}
+  	
+  	
   	td.si{
   		display: none;
   	}
@@ -76,7 +82,7 @@
           <th>Nombre Artículo</th>
           <th>Precio</th>
           <th>CodFrabricante</th>
-          <th>Accion</th>
+          <th colspan="2">Accion</th>
         </tr>
       </thead>
       <tbody>
@@ -104,18 +110,6 @@
     <div id="contenedorBoton">
     	<br><input type="button" value="Insertar Artículo" onclick="window.location.href='insertaProducto.jsp'"/>
     </div>
-    
-<%-- 
-    <%
-    String opcion = (String) request.getAttribute("borrar");
-    if(opcion == "borrar"){
-%>
-    <div id="alert">
-    	<input type="button" value="Sí, acepto borrar" id="si" onclick="window.location.href='ControllerServlet?opcion=borrar&confirmoBorrar=si'">
-    	<input type="button" value="No, cancelo borrar" id="no" onclick="window.location.href='ControllerServlet?opcion=listar&confirmoBorrar=no'">  
-    </div>
-<%  
-   }    
-%> --%>
+
   </body>
 </html>

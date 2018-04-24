@@ -1,8 +1,6 @@
 package model;
 
 import java.sql.*;
-import java.util.*;
-
 import javax.sql.DataSource;
 
 public class ProductoDAO {

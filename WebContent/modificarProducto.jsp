@@ -22,6 +22,7 @@
 		Precio: <input type="text" name="precio" id="precio" value="<%= precio%>"><br>
 		CodFabricante: <input type="text" name="codFabricante" id="codFabricante" value="<%= codFabricante%>"><br>
 		<input type="submit" name="opcion" id="modificar" value="modificar">
+		<input type="button" name="opcion" id="listar" value="Atrás" onclick="window.location.href='ControllerServlet?opcion=listar'">
 	</form>
 </body>
 </html>

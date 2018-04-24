@@ -67,9 +67,8 @@ public class ControllerServlet extends HttpServlet {
 		
 	
 		opcion = request.getParameter("opcion");
-		System.out.println(opcion);
+
 		if (opcion == null) opcion = "listar";
-		System.out.println(opcion);
 		switch (opcion) {
 		case "listar":
 			getProductos(request,response);
