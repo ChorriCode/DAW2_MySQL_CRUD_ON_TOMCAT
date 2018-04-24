@@ -51,13 +51,20 @@ public class ProductoDAO {
 		createConnextion();
 		String sql = "insert into articulos (nombre, precio, fabricante) values(?,?,?)";
 		preState = conn.prepareStatement(sql);
+		//establecemos cuales serán los valores de la consulta sql por cada "?" tenemos debajo que valores asignamos por el orden de las columnas
 		preState.setString(1, miProducto.getArticulo());
 		preState.setInt(2, miProducto.getPrecio());
 		preState.setInt(3, miProducto.getCodFabricante());
 		preState.execute();
-		
-		
-		
+			
+	}
+	
+	public void deleteProductos(int codProducto) throws Exception {
+		createConnextion();
+		String sql = "delete from articulos where codigo = ?";
+		preState = conn.prepareStatement(sql);
+		preState.setInt(1, codProducto);
+		preState.execute();
 	}
 
 

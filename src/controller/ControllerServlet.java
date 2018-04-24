@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import javax.swing.JOptionPane;
 
 import model.Producto;
 import model.ProductoDAO;
@@ -30,6 +31,7 @@ import model.ProductoDAO;
 public class ControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private String opcion;
 	private ProductoDAO miProductoDAO;
 
     //Establecer el DataSource
@@ -71,8 +73,11 @@ public class ControllerServlet extends HttpServlet {
 		
 		response.setContentType("text/plain");
 		
-		String opcion = request.getParameter("opcion");
+	
+		opcion = request.getParameter("opcion");
+		System.out.println(opcion);
 		if (opcion == null) opcion = "listar";
+		System.out.println(opcion);
 		switch (opcion) {
 		case "listar":
 			getProductos(request,response);
@@ -89,8 +94,16 @@ public class ControllerServlet extends HttpServlet {
 			break;
 		case "insertar":
 			setProductos(request,response);
+			opcion = "listar";
 			break;
+		case "borrar":
+			deleteProductos(request,response);
+			opcion = "listar";
+			break;
+
+
 		}
+		
 
 	}
 
@@ -135,13 +148,40 @@ public class ControllerServlet extends HttpServlet {
 		int codFabricante = Integer.parseInt(request.getParameter("codFabricante"));	
 		Producto miProducto = new Producto(articulo, precio, codFabricante);
 		try {
+			//insertamos el producto en la BBDD
 			miProductoDAO.setProductos(miProducto);
+			response.sendRedirect("http://localhost:8080/MySQL_CRUD_ON_TOMCAT/ControllerServlet");
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
 		
 	}
+	
+	public void deleteProductos(HttpServletRequest request, HttpServletResponse response) {
+
+			String codProducto = request.getParameter("codProducto");
+
+				try {
+					System.out.println("borraannnddooooooooooooo");
+					miProductoDAO.deleteProductos(Integer.parseInt(codProducto));
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			opcion = "listar";
+			
+			getProductos(request,response);
+	
+		
+	}
+	
+
 	
 	public ArrayList<Producto> convertirResultSetToProducto(ResultSet resultProductos){
 		ArrayList<Producto> resultado = new ArrayList<Producto>();
@@ -168,4 +208,17 @@ public class ControllerServlet extends HttpServlet {
 		
 	}
 
+
+
+	public String getOpcion() {
+		return opcion;
+	}
+
+
+
+	public void setOpcion(String opcion) {
+		this.opcion = opcion;
+	}
+
+	
 }

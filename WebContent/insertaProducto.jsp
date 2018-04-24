@@ -9,7 +9,7 @@
 <body>
 	<form name="fomrInsertar" method="get" action="ControllerServlet">
 		<p>INSERTAR UN ARTÍCULO</p>
-		Codigo: <input type="text" name="codigo" id="codigo"><br>
+<!-- 		Codigo: <input type="text" name="codigo" id="codigo"><br> -->
 		Nombre: <input type="text" name="articulo" id="articulo"><br>
 		Precio: <input type="text" name="precio" id="precio"><br>
 		CodFabricante: <input type="text" name="codFabricante" id="codFabricante"><br>
