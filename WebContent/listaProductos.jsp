@@ -4,8 +4,9 @@
 <% 
  //obtener productos de ControllerServlet
  
+ 
  	ArrayList<Producto> listaProductos = (ArrayList<Producto>) request.getAttribute("listaProductos");
-
+	
 	
 	
 %>
